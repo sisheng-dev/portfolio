@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Sanya — Portfolio</title>
+<link rel="icon" type="image/png" href="assets/projects/flower.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
 <style>
@@ -135,7 +136,9 @@
   .nav-logo {
     font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
     color: var(--ink); text-decoration: none; letter-spacing: .02em; position: relative;
+    display: inline-flex; align-items: center; gap: .45rem;
   }
+  .nav-logo-icon { width: 24px; height: 24px; object-fit: contain; display: block; }
   .nav-logo::after {
     content: ''; position: absolute; bottom: -2px; left: 0; right: 0;
     height: 2px; background: linear-gradient(90deg, var(--rose), var(--periwinkle));
@@ -588,7 +591,7 @@
 </div>
 
 <nav id="navbar">
-  <a href="#hero" class="nav-logo">Sanya ✦</a>
+  <a href="#hero" class="nav-logo"><img src="assets/projects/flower.png" alt="" class="nav-logo-icon" aria-hidden="true"><span>Sanya</span></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -698,12 +701,12 @@
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.3s" onclick="openProject('fullstack')">
-      <h3 class="project-title">Full-Stack Web App</h3>
-      <p class="project-desc">Built a multi-user web application with authentication, RESTful APIs, and a relational database backend. Designed for performance and maintainability.</p>
+      <h3 class="project-title">Stardew Valley Crop Analysis</h3>
+      <p class="project-desc">A data-driven analysis using machine learning to investigate whether multi-harvest crops yield higher profit per day than single-harvest crops — uncovering how Stardew Valleys economy is engineered to feel rewarding even when the math says otherwise.</p>
       <div class="project-tags">
         <span class="tag tag-sage">Python</span>
-        <span class="tag tag-lavender">React</span>
-        <span class="tag tag-sky">PostgreSQL</span>
+        <span class="tag tag-lavender">Data Science</span>
+        <span class="tag tag-sky">Game Economy</span>
       </div>
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
@@ -815,14 +818,14 @@
       <p class="timeline-period">November 2021 — Present</p>
       <h3 class="timeline-role">Medical Receptionist</h3>
       <p class="timeline-company">Rainier Sight & Sound</p>
-      <p class="timeline-body">Serve dual roles managing front-desk operations while acting as the sole technical resource: maintaining devices, configuring networks, enforcing HIPAA-aligned security policies, and supporting staff with day-to-day technology needs.</p>
+      <p class="timeline-body">Manage front-desk operations for a clinical optometry practice; handling patient scheduling, insurance verification, billing coordination, and maintaining accurate records in compliance with HIPAA privacy standards. Serve as the primary point of contact for patients while ensuring smooth day-to-day office operations.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
       <p class="timeline-period">November 2021 — Present</p>
       <h3 class="timeline-role">Support IT Specialist</h3>
       <p class="timeline-company">Rainier Sight & Sound/AudioNova</p>
-      <p class="timeline-body">Established the firm's information security posture from the ground up — researching FTC Safeguards compliance, drafting a WISP, and advising on tech stack selection for a new three-person practice.</p>
+      <p class="timeline-body">Act as the practice's sole technical resource by maintaining devices, configuring and troubleshooting networks, enforcing HIPAA-aligned security policies, and providing hands-on tech support for clinical and administrative staff. Independently manage all technology needs without a dedicated IT department.</p>
     </div>
   </div>
   <div class="edu-cards reveal">
@@ -1030,17 +1033,18 @@
     fullstack: {
       image: 'assets/projects/stardew.jpg',
       gradient: 'linear-gradient(135deg, #c5d4c0, #d4e8f2, #fde8e8)',
-      category: 'Software Development',
-      title: 'Full-Stack Web Application',
-      subtitle: 'Designed and built a multi-user web application from the ground up — handling everything from database schema design to frontend UI, with a focus on clean architecture and maintainability.',
+      category: 'Data Science',
+      title: 'Stardew Valley Crop Profitability Analysis',
+      subtitle: 'A data-driven analysis using machine learning to investigate whether multi-harvest crops yield higher profit per day than single-harvest crops — uncovering how Stardew Valleys economy is engineered to feel rewarding even when the math says otherwise.',
       meta: [
-        { label: 'Role', value: 'Solo Developer' },
-        { label: 'Type', value: 'Personal / Academic Project' },
-        { label: 'Stack', value: 'Python · React · PostgreSQL · REST API · Docker' },
-        { label: 'Tags', tags: ['Python', 'React', 'PostgreSQL', 'Full-Stack'] },
+        { label: 'Role', value: 'Data Scientist' },
+        { label: 'Type', value: 'Academic Project' },
+        { label: 'Stack', value: 'Python · Google CoLab · Matplotlib · Scikit-learn · Pandas' },
+        { label: 'Tags', tags: ['Data Science', 'Machine Learning', 'Game Data', 'Python'] },
       ],
-      challenge: 'Building a full-stack application as a solo developer requires making consistent architectural decisions across every layer of the stack while keeping the codebase approachable and the UI intuitive for real users.',
-      results: 'Delivered a fully functional application with user authentication, role-based access, a RESTful API backend, and a responsive React frontend. Containerized with Docker for reproducible deployment and documented for future maintainability.',
+      challenge: 'Stardew Valleys farming system presents players with a core strategic decision: invest in multi-harvest crops that regrow repeatedly, or single-harvest crops replanted each season. While conventional player wisdom favors multi-harvest crops, this project set out to test that assumption rigorously using the games actual crop data and to understand how in-game economic design shapes perceived value versus real profitability.',
+
+      results: 'Contrary to the hypothesis, single-harvest crops outperformed multi-harvest crops in average profit per day, driven by high-value outliers like Ancient Fruit. Built and compared two predictive models — Linear Regression and Decision Tree Regressor — using an 80/20 train/validation split evaluated with MSE. Findings reveal that Stardew Valleys economy is deliberately designed to make multi-harvest crops feel rewarding through consistency and lower risk, even when raw profitability favors single-harvest strategies.',
     },
   };
 
