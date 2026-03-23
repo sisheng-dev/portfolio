@@ -289,6 +289,7 @@
     background: var(--card-bg); backdrop-filter: blur(10px);
     border: 1px solid var(--card-border); border-radius: 24px; padding: 2rem;
     transition: transform .3s var(--ease-bounce), box-shadow .3s; position: relative; overflow: hidden; cursor: none;
+    will-change: transform;
   }
   .project-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -296,13 +297,7 @@
     transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease-soft);
   }
   .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(58,48,64,.1); }
-  .project-icon {
-    width: 44px; height: 44px; background: linear-gradient(135deg, var(--blush), var(--lavender));
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; margin-bottom: 1.2rem; transition: transform .3s var(--ease-bounce);
-  }
-  .project-card:hover .project-icon { transform: rotate(-8deg) scale(1.1); }
+  .project-card:hover { transform: translateY(-11px); box-shadow: 0 28px 60px rgba(58,48,64,.16); }
   .project-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: .5rem; color: var(--ink); }
   .project-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.4rem; }
@@ -326,12 +321,7 @@
   }
   .skill-category { }
   .skill-category-header {
-    display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
-  }
-  .skill-category-icon {
-    width: 30px; height: 30px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: .9rem; flex-shrink: 0;
+    display: flex; align-items: center; margin-bottom: 1rem;
   }
   .skill-category-name {
     font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
@@ -351,11 +341,6 @@
   .cat-sage     .skill-chip { background: rgba(197,212,192,.55); border: 1px solid rgba(197,212,192,.6); }
   .cat-sky      .skill-chip { background: rgba(200,223,240,.55); border: 1px solid rgba(200,223,240,.7); }
   .cat-blush    .skill-chip { background: rgba(253,232,240,.65); border: 1px solid rgba(232,180,200,.4); }
-  .cat-rose     .skill-category-icon { background: rgba(242,217,217,.8); }
-  .cat-lavender .skill-category-icon { background: rgba(214,207,232,.8); }
-  .cat-sage     .skill-category-icon { background: rgba(197,212,192,.8); }
-  .cat-sky      .skill-category-icon { background: rgba(200,223,240,.8); }
-  .cat-blush    .skill-category-icon { background: rgba(253,232,240,.8); }
 
   /* ── Project Overlay ── */
   .proj-overlay {
@@ -391,7 +376,12 @@
     font-size: 6rem; margin-bottom: 3rem;
     position: relative; overflow: hidden;
   }
-  .proj-hero-emoji { font-size: 7rem; filter: drop-shadow(0 8px 24px rgba(58,48,64,.15)); z-index: 1; }
+  .proj-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* category badge */
   .proj-category {
@@ -656,7 +646,6 @@
   </div>
   <div class="projects-grid">
     <div class="project-card reveal" onclick="openProject('healthcare')">
-      <div class="project-icon">🏥</div>
       <h3 class="project-title">Stardew Valley Case Study</h3>
       <p class="project-desc">Designed and maintained the full tech stack for a healthcare practice — network configuration, device management, and HIPAA-aligned security policies.</p>
       <div class="project-tags">
@@ -667,7 +656,6 @@
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.1s" onclick="openProject('wisp')">
-      <div class="project-icon">🔒</div>
       <h3 class="project-title">Honkai: Star Rail Case Study</h3>
       <p class="project-desc">Authored a Written Information Security Plan for a CPA firm, mapping FTC Safeguards Rule requirements to actionable policies for a small professional team.</p>
       <div class="project-tags">
@@ -678,7 +666,6 @@
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.2s" onclick="openProject('research')">
-      <div class="project-icon">🧠</div>
       <h3 class="project-title">CS × Psychology Research</h3>
       <p class="project-desc">Graduate research bridging human-computer interaction principles with software system design — exploring how cognitive models inform UI and data architecture decisions.</p>
       <div class="project-tags">
@@ -689,7 +676,6 @@
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.3s" onclick="openProject('fullstack')">
-      <div class="project-icon">🌐</div>
       <h3 class="project-title">Full-Stack Web App</h3>
       <p class="project-desc">Built a multi-user web application with authentication, RESTful APIs, and a relational database backend. Designed for performance and maintainability.</p>
       <div class="project-tags">
@@ -723,7 +709,6 @@
 
     <div class="skill-category cat-rose">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🐍</div>
         <span class="skill-category-name">Languages</span>
       </div>
       <div class="skill-chips">
@@ -737,7 +722,6 @@
 
     <div class="skill-category cat-lavender">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🖥️</div>
         <span class="skill-category-name">Systems & Infrastructure</span>
       </div>
       <div class="skill-chips">
@@ -752,7 +736,6 @@
 
     <div class="skill-category cat-sky">
       <div class="skill-category-header">
-        <div class="skill-category-icon">☁️</div>
         <span class="skill-category-name">Cloud & DevOps</span>
       </div>
       <div class="skill-chips">
@@ -767,7 +750,6 @@
 
     <div class="skill-category cat-sage">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🔒</div>
         <span class="skill-category-name">Security & Compliance</span>
       </div>
       <div class="skill-chips">
@@ -781,7 +763,6 @@
 
     <div class="skill-category cat-blush">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🛠️</div>
         <span class="skill-category-name">Tools & Platforms</span>
       </div>
       <div class="skill-chips">
@@ -852,7 +833,7 @@
     <div class="contact-links">
       <a href="#" class="social-btn">🐙 GitHub</a>
       <a href="#" class="social-btn">💼 LinkedIn</a>
-      <a href="#" class="social-btn">📄 Resume</a>
+      <a href="https://sanya-sinha-resume.tiiny.site" class="social-btn" target="_blank" rel="noopener noreferrer">📄 Resume</a>
     </div>
     <div class="email-wrap">
       <p class="email-label">Or reach me directly</p>
@@ -961,7 +942,7 @@
   // ── Project overlay ──
   const projects = {
     healthcare: {
-      emoji: '🏥',
+      image: 'assets/projects/hsr.jpg',
       gradient: 'linear-gradient(135deg, #fde8e8, #f2d9d9, #d4e8f2)',
       category: 'IT Infrastructure',
       title: 'Healthcare IT Infrastructure',
@@ -976,7 +957,7 @@
       results: 'Implemented a structured device management policy, enforced endpoint security standards, configured a segmented network, and established documented procedures for access control and incident response. The practice now operates with a clearly defined and auditable security posture.',
     },
     wisp: {
-      emoji: '🔒',
+      image: 'assets/projects/genshin.jpg',
       gradient: 'linear-gradient(135deg, #e8e4f5, #d6cfe8, #fde8f0)',
       category: 'Security & Compliance',
       title: 'WISP & Security Coordination',
@@ -991,7 +972,7 @@
       results: 'Delivered a complete WISP covering data classification, access controls, employee responsibilities, incident response, and vendor management. The firm launched with a compliant, documented security program and a clear owner for ongoing maintenance.',
     },
     research: {
-      emoji: '🧠',
+      image: 'assets/projects/hsr_battle.jpg',
       gradient: 'linear-gradient(135deg, #d4e8f2, #c8dff0, #e8e4f5)',
       category: 'Graduate Research',
       title: 'CS × Psychology Research',
@@ -1006,7 +987,7 @@
       results: 'Developed a framework connecting cognitive load theory and mental model research to practical interface design decisions. Research contributed to graduate coursework in HCI and informed subsequent project work applying user-centered design principles.',
     },
     fullstack: {
-      emoji: '🌐',
+      image: 'assets/projects/stardew.jpg',
       gradient: 'linear-gradient(135deg, #c5d4c0, #d4e8f2, #fde8e8)',
       category: 'Software Development',
       title: 'Full-Stack Web Application',
@@ -1036,7 +1017,7 @@
 
     document.getElementById('proj-content').innerHTML = `
       <div class="proj-hero" style="background:${p.gradient}">
-        <span class="proj-hero-emoji">${p.emoji}</span>
+        <img src="${p.image}" alt="${p.title} thumbnail" class="proj-hero-image" loading="lazy">
       </div>
       <span class="proj-category">${p.category}</span>
       <h1 class="proj-title">${p.title}</h1>

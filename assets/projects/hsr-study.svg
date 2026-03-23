@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="HSR study thumbnail">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7d7df"/>
+      <stop offset="55%" stop-color="#d6cfe8"/>
+      <stop offset="100%" stop-color="#c8dff0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="110" y="120" width="1380" height="660" rx="40" fill="rgba(255,255,255,0.52)"/>
+  <g fill="#6f5f7d">
+    <rect x="220" y="250" width="440" height="34" rx="17"/>
+    <rect x="220" y="310" width="920" height="22" rx="11" opacity="0.65"/>
+    <rect x="220" y="352" width="860" height="22" rx="11" opacity="0.5"/>
+  </g>
+  <g>
+    <circle cx="1220" cy="430" r="140" fill="rgba(255,255,255,0.65)"/>
+    <path d="M1140 500 C1180 370, 1260 370, 1300 500" fill="none" stroke="#7d6b8e" stroke-width="16"/>
+    <path d="M1165 500 L1275 500" stroke="#7d6b8e" stroke-width="16"/>
+  </g>
+  <text x="220" y="450" fill="#5f4f6d" font-size="62" font-family="Georgia, serif">Warp or Skip Study</text>
+</svg>

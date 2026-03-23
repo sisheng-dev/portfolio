@@ -215,61 +215,82 @@
 
   /* ── Hero Visual ── */
   .hero-visual {
-    flex: 0 0 300px; opacity: 0; transform: translateY(20px) scale(.95);
+    flex: 0 0 620px; opacity: 0; transform: translateY(20px) scale(.95);
+    margin-left: -28px;
     animation: fadeUp .9s var(--ease-soft) .6s forwards;
   }
-  .avatar-card {
-    width: 280px; height: 340px;
-    background: linear-gradient(145deg, #fde8e8, #e8e4f5, #d4e8f2);
-    border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%;
-    animation: morphBlob 10s ease-in-out infinite;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 5rem; position: relative;
-    box-shadow: 0 20px 60px rgba(200,160,168,.25);
+  /* ── Typewriter card ── */
+  .typewriter-card {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+    position: relative;
+    z-index: 1;
+    width: clamp(460px, 55vw, 860px);
   }
-  .avatar-card::after {
-    content: ''; position: absolute; inset: -8px; border-radius: inherit;
-    border: 2px dashed rgba(232,180,184,.4); animation: morphBlob 10s ease-in-out infinite reverse;
+  .tw-iam {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: .6rem;
+    letter-spacing: .04em;
   }
-  @keyframes morphBlob {
-    0%,100% { border-radius: 40% 60% 55% 45% / 45% 45% 55% 55%; }
-    25%     { border-radius: 55% 45% 40% 60% / 55% 45% 55% 45%; }
-    50%     { border-radius: 50% 50% 60% 40% / 40% 60% 50% 50%; }
-    75%     { border-radius: 45% 55% 45% 55% / 60% 40% 60% 40%; }
+  .tw-line {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 4.6vw, 4.2rem);
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.08;
+    height: 1.3em;
+    display: flex;
+    align-items: center;
+    overflow: visible;
+    white-space: nowrap;
   }
-
-  /* ── Orbit chips ── */
-  .chip {
+  .tw-typed {
+    color: var(--mauve);
+    font-style: italic;
+    font-family: var(--font-italic);
+  }
+  .tw-cursor {
+    display: inline-block;
+    width: 4px; height: 1em;
+    background: var(--rose);
+    margin-left: 1px;
+    vertical-align: middle;
+    flex-shrink: 0;
+    animation: cursorBlink .75s step-end infinite;
+  }
+  @keyframes cursorBlink { 0%,100% { opacity:1; } 50% { opacity:0; } }
+  .float-tag {
     position: absolute;
     background: var(--card-bg);
     backdrop-filter: blur(8px);
     border: 1px solid var(--card-border);
     border-radius: 99px;
-    padding: .28rem .75rem;
-    font-size: .68rem;
+    padding: .32rem .85rem;
+    font-size: .72rem;
     font-family: var(--font-body);
     font-weight: 500;
     color: var(--ink);
-    box-shadow: 0 4px 14px rgba(58,48,64,.1);
+    box-shadow: 0 4px 16px rgba(58,48,64,.1);
     white-space: nowrap;
+    animation: floatChip 4s ease-in-out infinite;
     pointer-events: none;
+    z-index: 2;
   }
-  .chip-1 { top: -10px;  left: 10px;   animation-delay: 0s; }
-  .chip-2 { top: 30px;   right: -20px; animation-delay: -.8s; }
-  .chip-3 { bottom: 40px; right: -30px; animation-delay: -1.6s; }
-  .chip-4 { bottom: -10px; left: 0px;  animation-delay: -2.4s; }
-  .chip {
-    position: absolute; background: white; border-radius: 99px; padding: .3rem .8rem;
-    font-size: .7rem; font-family: var(--font-body); font-weight: 500; color: var(--ink);
-    box-shadow: 0 4px 16px rgba(58,48,64,.1); animation: floatChip 4s ease-in-out infinite; white-space: nowrap;
-  }
-  .chip-1 { top: -10px;  left: 10px;  animation-delay: 0s; }
-  .chip-2 { top: 30px;   right: -20px; animation-delay: -.8s; }
-  .chip-3 { bottom: 40px; right: -30px; animation-delay: -1.6s; }
-  .chip-4 { bottom: -10px; left: 0px; animation-delay: -2.4s; }
+  .ft-1 { top: -14px;   left: 20px;   animation-delay: 0s;    }
+  .ft-2 { top: 10px;    right: -32px; animation-delay: -.7s;  }
+  .ft-3 { bottom: 48px; right: -36px; animation-delay: -1.5s; }
+  .ft-4 { bottom: -14px; left: 30px;  animation-delay: -2.2s; }
+  .ft-5 { bottom: 10px; left: -34px;  animation-delay: -3s;   }
   @keyframes floatChip {
-    0%,100% { transform: translateY(0); }
-    50%     { transform: translateY(-8px); }
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    33%     { transform: translateY(-7px) rotate(1deg); }
+    66%     { transform: translateY(-4px) rotate(-1deg); }
   }
 
   /* ── Section Header ── */
@@ -289,6 +310,7 @@
     background: var(--card-bg); backdrop-filter: blur(10px);
     border: 1px solid var(--card-border); border-radius: 24px; padding: 2rem;
     transition: transform .3s var(--ease-bounce), box-shadow .3s; position: relative; overflow: hidden; cursor: none;
+    will-change: transform;
   }
   .project-card::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
@@ -296,13 +318,7 @@
     transform: scaleX(0); transform-origin: left; transition: transform .4s var(--ease-soft);
   }
   .project-card:hover::before { transform: scaleX(1); }
-  .project-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(58,48,64,.1); }
-  .project-icon {
-    width: 44px; height: 44px; background: linear-gradient(135deg, var(--blush), var(--lavender));
-    border-radius: 12px; display: flex; align-items: center; justify-content: center;
-    font-size: 1.2rem; margin-bottom: 1.2rem; transition: transform .3s var(--ease-bounce);
-  }
-  .project-card:hover .project-icon { transform: rotate(-8deg) scale(1.1); }
+  .project-card:hover { transform: translateY(-11px); box-shadow: 0 28px 60px rgba(58,48,64,.16); }
   .project-title { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; margin-bottom: .5rem; color: var(--ink); }
   .project-desc { font-size: .88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.2rem; }
   .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.4rem; }
@@ -326,12 +342,7 @@
   }
   .skill-category { }
   .skill-category-header {
-    display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
-  }
-  .skill-category-icon {
-    width: 30px; height: 30px; border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: .9rem; flex-shrink: 0;
+    display: flex; align-items: center; margin-bottom: 1rem;
   }
   .skill-category-name {
     font-size: .72rem; letter-spacing: .18em; text-transform: uppercase;
@@ -351,11 +362,6 @@
   .cat-sage     .skill-chip { background: rgba(197,212,192,.55); border: 1px solid rgba(197,212,192,.6); }
   .cat-sky      .skill-chip { background: rgba(200,223,240,.55); border: 1px solid rgba(200,223,240,.7); }
   .cat-blush    .skill-chip { background: rgba(253,232,240,.65); border: 1px solid rgba(232,180,200,.4); }
-  .cat-rose     .skill-category-icon { background: rgba(242,217,217,.8); }
-  .cat-lavender .skill-category-icon { background: rgba(214,207,232,.8); }
-  .cat-sage     .skill-category-icon { background: rgba(197,212,192,.8); }
-  .cat-sky      .skill-category-icon { background: rgba(200,223,240,.8); }
-  .cat-blush    .skill-category-icon { background: rgba(253,232,240,.8); }
 
   /* ── Project Overlay ── */
   .proj-overlay {
@@ -391,7 +397,12 @@
     font-size: 6rem; margin-bottom: 3rem;
     position: relative; overflow: hidden;
   }
-  .proj-hero-emoji { font-size: 7rem; filter: drop-shadow(0 8px 24px rgba(58,48,64,.15)); z-index: 1; }
+  .proj-hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   /* category badge */
   .proj-category {
@@ -604,12 +615,13 @@
     </div>
   </div>
   <div class="hero-visual">
-    <div style="position:relative; display:inline-block;">
-      <div class="avatar-card">✿</div>
-      <span class="chip chip-1">CS</span>
-      <span class="chip chip-2">Research</span>
-      <span class="chip chip-3">Security</span>
-      <span class="chip chip-4">M.S. 2025</span>
+<div style="position:relative; display:inline-block;">
+      <div class="typewriter-card">
+        <p class="tw-iam">I am a</p>
+        <div class="tw-line">
+          <span class="tw-typed" id="tw-typed"></span><span class="tw-cursor"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -656,29 +668,26 @@
   </div>
   <div class="projects-grid">
     <div class="project-card reveal" onclick="openProject('healthcare')">
-      <div class="project-icon">🏥</div>
-      <h3 class="project-title">Stardew Valley Case Study</h3>
-      <p class="project-desc">Designed and maintained the full tech stack for a healthcare practice — network configuration, device management, and HIPAA-aligned security policies.</p>
+      <h3 class="project-title">Honkai: Star Rail Case Study</h3>
+      <p class="project-desc">A mixed-methods study exploring how Honkai: Star Rail players emotionally and cognitively experience the warp system — and what drives feelings of fairness or frustration.</p>
       <div class="project-tags">
-        <span class="tag tag-rose">AI/ML</span>
-        <span class="tag tag-lavender">Data Science</span>
-        <span class="tag tag-sky">Security</span>
+        <span class="tag tag-rose">Player Psychology</span>
+        <span class="tag tag-lavender">Mixed Methods</span>
+        <span class="tag tag-sky">Gacha Systems</span>
       </div>
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.1s" onclick="openProject('wisp')">
-      <div class="project-icon">🔒</div>
-      <h3 class="project-title">Honkai: Star Rail Case Study</h3>
-      <p class="project-desc">Authored a Written Information Security Plan for a CPA firm, mapping FTC Safeguards Rule requirements to actionable policies for a small professional team.</p>
+      <h3 class="project-title">Genshin Impact Case Study</h3>
+      <p class="project-desc">A qualitative study investigating how limited-time banner pressure shapes player decision-making, emotional wellbeing, and long-term retention in Genshin Impact.</p>
       <div class="project-tags">
-        <span class="tag tag-rose">FTC Compliance</span>
-        <span class="tag tag-lavender">Policy</span>
-        <span class="tag tag-sage">CPA</span>
+        <span class="tag tag-rose">Player Retention</span>
+        <span class="tag tag-lavender">Qualitative Research</span>
+        <span class="tag tag-sage">Gacha Systems</span>
       </div>
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.2s" onclick="openProject('research')">
-      <div class="project-icon">🧠</div>
       <h3 class="project-title">Neural Combat: Reinforcement Learning for Dynamic Boss Balancing</h3>
       <p class="project-desc">A deep-learning project using Reinforcement Learning (PPO) within Unreal Engine 5 to create an adaptive AI boss that dynamically adjusts its combat strategy based on real-time player performance metrics.</p>
       <div class="project-tags">
@@ -689,7 +698,6 @@
       <span class="project-link">View details <span class="arrow">→</span></span>
     </div>
     <div class="project-card reveal" style="transition-delay:.3s" onclick="openProject('fullstack')">
-      <div class="project-icon">🌐</div>
       <h3 class="project-title">Full-Stack Web App</h3>
       <p class="project-desc">Built a multi-user web application with authentication, RESTful APIs, and a relational database backend. Designed for performance and maintainability.</p>
       <div class="project-tags">
@@ -723,7 +731,6 @@
 
     <div class="skill-category cat-rose">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🐍</div>
         <span class="skill-category-name">Languages</span>
       </div>
       <div class="skill-chips">
@@ -737,56 +744,52 @@
 
     <div class="skill-category cat-lavender">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🖥️</div>
-        <span class="skill-category-name">Systems & Infrastructure</span>
+        <span class="skill-category-name">Data Visualization</span>
       </div>
       <div class="skill-chips">
-        <span class="skill-chip">Linux</span>
-        <span class="skill-chip">Windows Server</span>
-        <span class="skill-chip">Active Directory</span>
-        <span class="skill-chip">VMware</span>
-        <span class="skill-chip">DNS / DHCP</span>
-        <span class="skill-chip">TCP/IP Networking</span>
+        <span class="skill-chip">Tableau</span>
+        <span class="skill-chip">Matplotlib</span>
+        <span class="skill-chip">Seaborn</span>
+        <span class="skill-chip">Power BI</span>
+        <span class="skill-chip">Looker Studio</span>
+        <span class="skill-chip">Dovetail</span>
       </div>
     </div>
 
     <div class="skill-category cat-sky">
       <div class="skill-category-header">
-        <div class="skill-category-icon">☁️</div>
-        <span class="skill-category-name">Cloud & DevOps</span>
+        <span class="skill-category-name">User Research</span>
       </div>
       <div class="skill-chips">
-        <span class="skill-chip">AWS</span>
-        <span class="skill-chip">Docker</span>
-        <span class="skill-chip">Git & GitHub</span>
-        <span class="skill-chip">REST APIs</span>
-        <span class="skill-chip">Node.js</span>
-        <span class="skill-chip">PostgreSQL</span>
+        <span class="skill-chip">User Interviewing</span>
+        <span class="skill-chip">Usability Testing</span>
+        <span class="skill-chip">Survey Design</span>
+        <span class="skill-chip">Data Synthesis</span>
+        <span class="skill-chip">Mixed Methods</span>
+        <span class="skill-chip">A/B Testing</span>
       </div>
     </div>
 
     <div class="skill-category cat-sage">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🔒</div>
-        <span class="skill-category-name">Security & Compliance</span>
+        <span class="skill-category-name">Data Science & ML</span>
       </div>
       <div class="skill-chips">
-        <span class="skill-chip">HIPAA</span>
-        <span class="skill-chip">FTC Safeguards</span>
-        <span class="skill-chip">WISP Authoring</span>
-        <span class="skill-chip">Wireshark</span>
-        <span class="skill-chip">Incident Response</span>
+        <span class="skill-chip">NumPy</span>
+        <span class="skill-chip">Scikit-learn</span>
+        <span class="skill-chip">TensorFlow</span>
+        <span class="skill-chip">Jupyter</span>
+        <span class="skill-chip">ETL</span>
       </div>
     </div>
 
     <div class="skill-category cat-blush">
       <div class="skill-category-header">
-        <div class="skill-category-icon">🛠️</div>
         <span class="skill-category-name">Tools & Platforms</span>
       </div>
       <div class="skill-chips">
         <span class="skill-chip">Microsoft 365</span>
-        <span class="skill-chip">Figma</span>
+        <span class="skill-chip">Google Workspace</span>
         <span class="skill-chip">React</span>
         <span class="skill-chip">VS Code</span>
         <span class="skill-chip">Slack</span>
@@ -809,24 +812,17 @@
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <p class="timeline-period">2024 — Present</p>
-      <h3 class="timeline-role">Receptionist & IT Support Specialist</h3>
-      <p class="timeline-company">Healthcare Practice</p>
-      <p class="timeline-body">Serve dual roles managing front-desk operations while acting as the sole technical resource — maintaining devices, configuring networks, enforcing HIPAA-aligned security policies, and supporting staff with day-to-day technology needs.</p>
+      <p class="timeline-period">November 2021 — Present</p>
+      <h3 class="timeline-role">Medical Receptionist</h3>
+      <p class="timeline-company">Rainier Sight & Sound</p>
+      <p class="timeline-body">Serve dual roles managing front-desk operations while acting as the sole technical resource: maintaining devices, configuring networks, enforcing HIPAA-aligned security policies, and supporting staff with day-to-day technology needs.</p>
     </div>
     <div class="timeline-item">
       <div class="timeline-dot"></div>
-      <p class="timeline-period">2024 — Present</p>
-      <h3 class="timeline-role">De Facto IT & Security Coordinator</h3>
-      <p class="timeline-company">CPA Firm (Contract)</p>
+      <p class="timeline-period">November 2021 — Present</p>
+      <h3 class="timeline-role">Support IT Specialist</h3>
+      <p class="timeline-company">Rainier Sight & Sound/AudioNova</p>
       <p class="timeline-body">Established the firm's information security posture from the ground up — researching FTC Safeguards compliance, drafting a WISP, and advising on tech stack selection for a new three-person practice.</p>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <p class="timeline-period">2023 — 2025</p>
-      <h3 class="timeline-role">Graduate Research Student</h3>
-      <p class="timeline-company">University of Washington Tacoma — M.S. Computer Science</p>
-      <p class="timeline-body">Completed graduate-level coursework and research in systems, software engineering, and human-computer interaction, graduating December 2025.</p>
     </div>
   </div>
   <div class="edu-cards reveal">
@@ -850,13 +846,13 @@
     <h2 class="contact-tagline">Let's <em>connect</em></h2>
     <p class="contact-sub">Looking to collaborate or discuss opportunities? I'd love to chat about how I can contribute to your team.</p>
     <div class="contact-links">
-      <a href="#" class="social-btn">🐙 GitHub</a>
-      <a href="#" class="social-btn">💼 LinkedIn</a>
-      <a href="#" class="social-btn">📄 Resume</a>
+      <a href="https://github.com/sisheng-dev" class="social-btn" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/sanyasinha/" class="social-btn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://sanya-sinha-resume.tiiny.site" class="social-btn" target="_blank" rel="noopener noreferrer">Resume</a>
     </div>
     <div class="email-wrap">
       <p class="email-label">Or reach me directly</p>
-      <a href="mailto:hello@sanya.dev" class="email-addr">hello@sanya.dev</a>
+      <a href="mailto:mssanya.sinha@gmail.com" class="email-addr">hello@sanya.dev</a>
     </div>
   </div>
 </section>
@@ -867,6 +863,29 @@
 
 <script>
   // ── Cursor ──
+
+  // ── Typewriter ──
+  (function() {
+    const roles = ['software_engineer','data_scientist','gaming_enthusiast','user_researcher','full_stack_dev','chronic_overthinker'];
+    const el = document.getElementById('tw-typed');
+    if (!el) return;
+    let ri = 0, ci = 0, deleting = false;
+    const TYPE_SPEED = 80, DELETE_SPEED = 45, PAUSE_END = 1800, PAUSE_START = 320;
+    function tick() {
+      const word = roles[ri];
+      if (!deleting) {
+        el.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(tick, PAUSE_END); return; }
+        setTimeout(tick, TYPE_SPEED);
+      } else {
+        el.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; setTimeout(tick, PAUSE_START); return; }
+        setTimeout(tick, DELETE_SPEED);
+      }
+    }
+    setTimeout(tick, 900);
+  })();
+
   const cursor = document.getElementById('cursor');
   const ring   = document.getElementById('cursor-ring');
   let mx = 0, my = 0, rx = 0, ry = 0;
@@ -961,37 +980,39 @@
   // ── Project overlay ──
   const projects = {
     healthcare: {
-      emoji: '🏥',
+      image: 'assets/projects/hsr.jpg',
       gradient: 'linear-gradient(135deg, #fde8e8, #f2d9d9, #d4e8f2)',
-      category: 'Data Science',
-      title: 'Stardew Valley Case Study',
-      subtitle: 'Serving as the sole technical resource for a healthcare practice, I designed and maintained the full technology environment — from network architecture to endpoint security — ensuring day-to-day operations ran smoothly and stayed compliant.',
+      category: 'User Research',
+      title: 'Warp or Skip: Player Perception of HSR Gacha System',
+      subtitle: 'A mixed-methods study exploring how Honkai: Star Rail players emotionally and cognitively experience the warp system and what drives feelings of fairness or frustration.',
       meta: [
-        { label: 'Role', value: 'IT Support Specialist' },
-        { label: 'Type', value: 'Ongoing / Operations' },
-        { label: 'Stack', value: 'Windows Server · Active Directory · Wireshark · Microsoft 365' },
-        { label: 'Tags', tags: ['HIPAA', 'Network', 'Security', 'Endpoints'] },
+        { label: 'Role', value: 'User Researcher' },
+        { label: 'Type', value: 'Personal Research Project' },
+        { label: 'Stack', value: 'Survey · Interviews · Desk Research · Microsoft 365' },
+        { label: 'Tags', tags: ['PLayer Psychology', 'Gacha Systems', 'Mixed Methods', 'Game UX'] },
       ],
-      challenge: 'The practice had no formal IT policy or consistent device management process. Staff were using personal devices, passwords were shared, and there was no documented incident response plan — creating serious HIPAA exposure.',
-      results: 'Implemented a structured device management policy, enforced endpoint security standards, configured a segmented network, and established documented procedures for access control and incident response. The practice now operates with a clearly defined and auditable security posture.',
+      challenge: 'Gacha mechanics sit at the intersection of game design and player psychology — they drive both deep engagement and sudden churn. Yet the emotional experience of pulling is rarely studied systematically. This project set out to understand how HSR players feel before, during, and after warping, and what factors shape whether the system feels fair or exploitative.',
+      
+      results: 'Surfaced four key insights: pity tracking behavior correlates strongly with feelings of control; failed 50/50s are a more significant churn trigger than slow pity accumulation; F2P players develop a "saving ritual" that increases perceived reward value; and character design consistently outweighs meta value as a pull motivator across all spending segments. Findings translate directly into actionable banner design and communication recommendations.',
     },
     wisp: {
-      emoji: '🔒',
+      image: 'assets/projects/genshin.jpg',
       gradient: 'linear-gradient(135deg, #e8e4f5, #d6cfe8, #fde8f0)',
-      category: 'Security & Compliance',
-      title: 'WISP & Security Coordination',
-      subtitle: 'Acting as the de facto IT and security lead for a newly launched CPA firm, I researched regulatory requirements and authored a comprehensive Written Information Security Plan aligned with FTC Safeguards Rule obligations.',
+      category: 'User Research',
+      title: 'To Pull or Not: How Genshin Impact Players Navigate FOMO and Long-Term Engagement',
+      subtitle: 'A qualitative study investigating how limited-time banner pressure shapes player decision-making, emotional wellbeing, and long-term retention in Genshin Impact.',
       meta: [
-        { label: 'Role', value: 'Security Coordinator (Contract)' },
-        { label: 'Type', value: 'Policy & Documentation' },
-        { label: 'Stack', value: 'FTC Safeguards · WISP · Risk Assessment' },
-        { label: 'Tags', tags: ['FTC Compliance', 'Policy', 'CPA', 'Risk'] },
+        { label: 'Role', value: 'User Researcher' },
+        { label: 'Type', value: 'Personal Research Project' },
+        { label: 'Stack', value: 'Interviews · Community Analysis · Comparitive Benchmarking' },
+        { label: 'Tags', tags: ['Qualitative Research', 'Genshin Impact', 'PLayer Retention', 'Gacha Systems'] },
       ],
-      challenge: 'A three-person CPA firm launching from scratch had no security documentation, no defined data handling policies, and no awareness of their obligations under the FTC Safeguards Rule — leaving them exposed before they had served a single client.',
-      results: 'Delivered a complete WISP covering data classification, access controls, employee responsibilities, incident response, and vendor management. The firm launched with a compliant, documented security program and a clear owner for ongoing maintenance.',
+      challenge: 'Genshin Impact\'s limited-time banner structure creates recurring pressure cycles every three weeks. Unlike a traditional purchase decision, players must weigh scarcity, resource accumulation, character attachment, and future uncertainty simultaneously — often under time pressure. Understanding how players navigate this cognitively and emotionally is critical for designing systems that retain players without burning them out.',
+
+      results: 'Identified three distinct player archetypes: the Planner, the Impulse Puller, and the Reluctant Skipper,each with different emotional needs and churn risks. Found that transparent communication about future banners reduces anxiety and increases trust, and that players who feel agency in skipping a banner are more likely to stay engaged long-term than those who pull reluctantly. Recommendations center on reducing scarcity anxiety without removing excitement.',
     },
     research: {
-      emoji: '🧠',
+      image: 'assets/projects/hsr_battle.jpg',
       gradient: 'linear-gradient(135deg, #d4e8f2, #c8dff0, #e8e4f5)',
       category: 'Independent Research',
       title: 'Reinforcement Learning for Dynamic Boss Balancing',
@@ -1007,7 +1028,7 @@
       results: 'I developed a Proximal Policy Optimization (PPO) model within UE5 that mastered a multi-phase boss fight by integrating a Neural Network directly into the Gameplay Ability System (GAS). The agent learned to select attacks based on real-time reward signals, such as player health depletion and successful hits. This approach achieved a 30% reduction in combat monotony and significantly increased move variation compared to traditional Behavior Tree-based AI. Most importantly, the inference model maintained a real-time latency overhead of less than 2ms, ensuring zero impact on the game’s frame rate or performance',
     },
     fullstack: {
-      emoji: '🌐',
+      image: 'assets/projects/stardew.jpg',
       gradient: 'linear-gradient(135deg, #c5d4c0, #d4e8f2, #fde8e8)',
       category: 'Software Development',
       title: 'Full-Stack Web Application',
@@ -1037,7 +1058,7 @@
 
     document.getElementById('proj-content').innerHTML = `
       <div class="proj-hero" style="background:${p.gradient}">
-        <span class="proj-hero-emoji">${p.emoji}</span>
+        <img src="${p.image}" alt="${p.title} thumbnail" class="proj-hero-image" loading="lazy">
       </div>
       <span class="proj-category">${p.category}</span>
       <h1 class="proj-title">${p.title}</h1>
@@ -1070,6 +1091,7 @@
 
   // close on Escape key
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });
+  
 </script>
 </body>
 </html>
