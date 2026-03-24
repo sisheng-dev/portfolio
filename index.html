@@ -1018,18 +1018,18 @@
     research: {
       image: 'assets/projects/hsr_battle.jpg',
       gradient: 'linear-gradient(135deg, #d4e8f2, #c8dff0, #e8e4f5)',
-      category: 'Independent Research',
-      title: 'Reinforcement Learning for Dynamic Boss Balancing',
-      subtitle: 'A deep-learning project using Reinforcement Learning (PPO) within Unreal Engine 5 to create an adaptive AI boss that dynamically adjusts its combat strategy based on real-time player performance metrics.',
+      category: 'Academic Project',
+      title: 'Optimizing Hausdorff Distance for Vector Databases',
+      subtitle: 'A novel approximation algorithm for high-dimensional vector similarity search, achieving near-exact results at a fraction of the computational cost of traditional methods.',
       meta: [
-        { label: 'Role', value: 'Researcher & Engineer' },
-        { label: 'Institution', value: 'N/A' },
-        { label: 'Field', value: 'Machine Learning Research & Game Systems Engineering' },
-        { label: 'Tags', tags: ['Machine Learning', 'Unreal Engine', 'Personal Project', 'Cognitive Science'] },
+        { label: 'Role', value: 'Software Engineer' },
+        { label: 'Institution', value: 'University of Washington, Tacoma' },
+        { label: 'Field', value: 'Vector Databases & Computational Geometry' },
+        { label: 'Tags', tags: ['Algorithm Design', 'Vector Databases', 'Python', 'Jupyter Notebook'] },
       ],
-      challenge: 'In high-action games like Genshin Impact or Zenless Zone Zero, boss encounters are often balanced by manually tweaking "flat" stats (HP/ATK). This leads to a binary experience: the boss is either a "damage sponge" or a "pushover." The challenge was to develop an ML agent that learns optimal combat behavior and then scales its "Intelligence Quotient" (IQ) in real-time based on the player’s input frequency and dodge success rate.',
+      challenge: 'Vector similarity search in high-dimensional databases relies on distance metrics that become computationally prohibitive at scale. The exact Hausdorff Distance, while precise, required ~38 seconds per query on 100-vector sets; far too slow for practical database applications. The challenge was to design an approximation approach that preserved result quality while making the algorithm viable for real-world use.',
 
-      results: 'I developed a Proximal Policy Optimization (PPO) model within UE5 that mastered a multi-phase boss fight by integrating a Neural Network directly into the Gameplay Ability System (GAS). The agent learned to select attacks based on real-time reward signals, such as player health depletion and successful hits. This approach achieved a 30% reduction in combat monotony and significantly increased move variation compared to traditional Behavior Tree-based AI. Most importantly, the inference model maintained a real-time latency overhead of less than 2ms, ensuring zero impact on the game’s frame rate or performance',
+      results: 'Designed and implemented a novel approximation algorithm inspired by the Hausdorff Distance using Python, NumPy, PostGIS, and Matplotlib. The algorithm reduced computational time from ~38 seconds to 0.03 seconds for 100-vector sets, a ~1,267x speedup while maintaining less than 10% deviation from exact results, preserving practical accuracy for similarity search tasks.',
     },
     fullstack: {
       image: 'assets/projects/stardew.jpg',
